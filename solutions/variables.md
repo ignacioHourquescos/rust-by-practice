@@ -1,14 +1,16 @@
-1.
+1.OK
 
 ```rust
 fn main() {
-    let x: i32 = 5; // uninitialized but using, ERROR !
-    let y: i32; // uninitialized but also unusing, only warning
-    println!("{} is equal to 5", x);
+    let x: i32 = 5; // Uninitialized but used, ERROR !
+    let y: i32; // Uninitialized but also unused, only a Warning !
+
+    assert_eq!(x, 5);
+    println!("Success!");
 }
 ```
 
-2.
+2.OK
 
 ```rust
 fn main() {
@@ -19,13 +21,14 @@ fn main() {
 }
 ```
 
-3.
+3.OK
 
 ```rust
 fn main() {
     let x: i32 = 10;
+    let y: i32 = 5;
     {
-        let y: i32 = 5;
+
         println!("The value of x is {} and value of y is {}", x, y);
     }
     println!("The value of x is {}", x);
@@ -58,7 +61,7 @@ fn define_x() -> &'static str {
 }
 ```
 
-5.
+5.OK
 
 ```rust
 fn main() {
@@ -75,15 +78,15 @@ fn main() {
 }
 ```
 
-6.
+6.OK
 
 ```rust
 fn main() {
     let mut x: i32 = 1;
     x = 7;
     // shadowing and re-binding
-    let x = x;
-    // x += 3;
+    // let x = x;
+    x += 3;
 
 
     let y = 4;
@@ -92,13 +95,7 @@ fn main() {
 }
 ```
 
-7.
-
-```rust
-fn main() {
-    let _x = 1;
-}
-```
+7.OK
 
 ```rust
 #[allow(unused_variables)]
@@ -107,7 +104,7 @@ fn main() {
 }
 ```
 
-8.
+8. OK
 
 ```rust
 fn main() {
